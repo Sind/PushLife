@@ -3,9 +3,11 @@ ANIMATION_TIME = 0.5
 player = {
 	maxhealth = 5,
 	health = 5,
-	damage = 1,
+	attack = 1,
 	defence = 0,
 	image = love.graphics.newImage("graphics/player.png"),
+	heartContainer = love.graphics.newImage("graphics/heart_container.png"),
+	heart = love.graphics.newImage("graphics/heart.png"),
 	scale = 0.03
 }
 
@@ -28,14 +30,20 @@ function player.push()
 	if clevel.onhalftile or player.pushing or player.pulling then return end
 	player.pushing = true
 	player.animationTimer = 0
-	clevel:push()
+	damage = clevel:push(player.attack,player.defence)
+	if damage then
+		player.getHit(damage)
+	end
 end
 
 function player.pull()
 	if clevel.onhalftile or player.pushing or player.pulling then return end
 	player.pulling = true
 	player.animationTimer = 0
-	clevel:pull()
+	damage = clevel:pull(player.attack,player.defence)
+	if damage then
+		player.getHit(damage)
+	end
 end
 
 function player.draw()
@@ -46,4 +54,12 @@ function player.draw()
 	move = 0.75 - 0.25 * math.sin(player.animationTimer / ANIMATION_TIME * math.pi)
 	end
 	love.graphics.draw(player.image,0,9,0,player.scale,player.scale,player.image:getWidth()/2,player.image:getHeight()*move)
+	for i = 1,5 do
+		local di = i - 3
+		if i <= player.health then
+			love.graphics.draw(player.heart,di , 8.5, 0, 0.01, 0.01, player.heart:getWidth()/2, player.heart:getHeight()/2)
+		else
+			love.graphics.draw(player.heartContainer,di , 8.5, 0, 0.01, 0.01, player.heartContainer:getWidth()/2, player.heartContainer:getHeight()/2)
+		end
+	end
 end

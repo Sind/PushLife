@@ -3,6 +3,7 @@ level = class()
 function level:init(leveltype)
 	self.name = leveltype.name
 	self.objects = {}
+	math.randomseed(7)
 	for i = 1,leveltype.numObjects-1 do
 		self.objects[i] = object:new(leveltype.objects[math.random(1,#leveltype.objects)])
 	end
@@ -69,21 +70,25 @@ function level:getTile(n)
 	return (n-.5)*length-6
 end
 
-function level:push()
+function level:push(attack,defence)
 	if self.onhalftile then return end
-	local moveOn = self.objects[self.ctile]:push()
+	local moveOn,damage = self.objects[self.ctile]:push(attack,defence)
 	if moveOn then
 		self.halftile = self.ctile
 		self.onhalftile = true
+	elseif damage then
+		return damage
 	end
 end
 
-function level:pull()
+function level:pull(attack,defence)
 	if self.onhalftile then return end
-	local moveOn = self.objects[self.ctile]:pull()
+	local moveOn,damage = self.objects[self.ctile]:pull(attack,defence)
 	if moveOn then
 		self.halftile = self.ctile
 		self.onhalftile = true
+	elseif damage then
+		return damage
 	end
 end
 
@@ -93,8 +98,10 @@ cave = {
 	numObjects = 6,
 	objects = {
 		consumables.apple,
-		-- enemies.bat,
-		-- enemies.slime,
+		enemies.bat,
+		enemies.bat,
+		enemies.slime,
+		enemies.slime,
 		-- chests.treasure,
 		-- chests.badChest,
 		equips.sword
