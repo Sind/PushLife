@@ -72,7 +72,6 @@ end
 function level:push()
 	if self.onhalftile then return end
 	local moveOn = self.objects[self.ctile]:push()
-	print(moveOn)
 	if moveOn then
 		self.halftile = self.ctile
 		self.onhalftile = true
@@ -93,7 +92,7 @@ cave = {
 	name = "cave",
 	numObjects = 6,
 	objects = {
-		-- consumables.apple,
+		consumables.apple,
 		-- enemies.bat,
 		-- enemies.slime,
 		-- chests.treasure,

@@ -2,15 +2,11 @@ object = class()
 
 
 function object:init(objectType)
-	for k,v in pairs(objectType) do
-		print(k,v)
-	end
 	self.type = objectType.type
 	self.image = objectType.image
 end
 
 function object:push()
-	print(self.type)
 	if self.type == enemy then
 
 	else
@@ -19,7 +15,11 @@ function object:push()
 end
 
 function object:pull()
+	if self.type == enemy then
 
+	else
+
+	end
 end
 
 function object:draw(x,y,scale)
@@ -37,7 +37,9 @@ enemies = {
 consumables = {
 	apple = {
 		type = "consumable",
-		subtype = "health"
+		subtype = "health",
+		heal = 1,
+		image = love.graphics.newImage("graphics/apple.png")
 	}
 }
 

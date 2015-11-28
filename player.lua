@@ -1,8 +1,8 @@
 ANIMATION_TIME = 0.5
 
 player = {
-	maxhealth = 10,
-	health = 10,
+	maxhealth = 5,
+	health = 5,
 	damage = 1,
 	defence = 0,
 	image = love.graphics.newImage("graphics/player.png"),
