@@ -19,6 +19,11 @@ function player.getHit(damage)
 	table.insert(physicsobjects,hit)
 end
 
+function player.gainAttack(attack)
+	player.attack = player.attack + attack
+	local attacka = physicsobject:new(0,5.5,"+" .. attack,{128,128,128})
+	table.insert(physicsobjects,attacka)
+end
 function player.heal(heal)
 	player.health = player.health + heal
 	if player.health > player.maxhealth then player.health = player.maxhealth end

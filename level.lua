@@ -109,3 +109,16 @@ cave = {
 	boss = enemies.dragon,
 	background = love.graphics.newImage("graphics/cave_bg1.png")
 }
+
+menu = {
+	name = "menu",
+	numObjects = 3,
+	objects = {
+		object:new(menu.quit),
+		object:new(menu.start),
+		object:new(menu.credits),
+		object:new(menu.quit),
+		object:new(menu.start),
+		object:new(menu.credits)
+	}
+}

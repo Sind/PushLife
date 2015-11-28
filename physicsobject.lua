@@ -23,7 +23,6 @@ function physicsobject:update(dt)
 end
 
 function physicsobject:draw()
-	print(self.time/DURATION)
 	local alpha = 255 - math.min(255,255 *(self.time/DURATION))
 	love.graphics.setColor(self.color[1], self.color[2], self.color[3], alpha)
 	love.graphics.print(self.text,self.x,self.y,0,1.5,1.5)

@@ -26,6 +26,7 @@ function object:pull(attack,defence)
 	if self.type == "enemy" then
 		return false,self.attack
 	elseif self.type == "equip" then
+		player.gainAttack(1)
 		return true
 	elseif self.type == "consumable" then
 		player.heal(1)
@@ -96,5 +97,20 @@ vendors ={
 	blacksmith = {
 		type = "vendor",
 
+	}
+}
+
+menu = {
+	start = {
+		type = "menu",
+		subtype = "start"
+	},
+	credits = {
+		type = "menu",
+		subtype = "credits"
+	},
+	quit = {
+		type = "menu",
+		subtype = "quit"
 	}
 }
