@@ -1,12 +1,13 @@
 object = class()
 
 
-function object:init(leveltype)
-
+function object:init(objectType)
+	self.type = objectType.type
+	self.image = objectType.image
 end
 
 function object:draw(x,y,scale)
-	love.graphics.circle("fill", x, y, 2*scale)
+	love.graphics.draw(self.image, x, y, 0, scale/40, scale/40, self.image:getWidth()/2, self.image:getHeight()/2)
 end
 --objectlist:
 enemies = {
@@ -39,7 +40,8 @@ equips = {
 	sword = {
 		type = equip,
 		subtype = weapon,
-		attack = 1
+		attack = 1,
+		image = love.graphics.newImage("graphics/sword_shit.png")
 	}
 
 }
