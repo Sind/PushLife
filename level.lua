@@ -35,6 +35,12 @@ function level:draw()
 			love.graphics.draw(self.background, i, j, 0, 3/self.background:getWidth(), 3/self.background:getHeight())
 		end
 	end
+	love.graphics.setColor(255, 255, 255, 50)
+	love.graphics.draw(pullImage,-4,4.5,0,6/pullImage:getWidth(),6/pullImage:getWidth(),pullImage:getWidth()/2,pullImage:getHeight()/2)
+	love.graphics.draw(pushImage,4,4.5,0,6/pushImage:getWidth(),6/pushImage:getWidth(),pushImage:getWidth()/2,pushImage:getHeight()/2)
+	love.graphics.line(0, 0, 0, 9)
+	love.graphics.setColor(255, 255, 255, 255)
+
 	love.graphics.setColor(50, 50, 50)
 	love.graphics.roundrectangle("line", -6, .2, 12, 0.5,.1)
 	for i = 1, #self.objects do

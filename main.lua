@@ -65,11 +65,6 @@ function love.draw()
 	love.graphics.scale((dright-dleft)/14,(dbottom-dtop)/9)
 
 	love.graphics.setLineWidth(0.05)
-	love.graphics.setColor(255, 255, 255, 100)
-	love.graphics.draw(pullImage,-4,4.5,0,6/pullImage:getWidth(),6/pullImage:getWidth(),pullImage:getWidth()/2,pullImage:getHeight()/2)
-	love.graphics.draw(pushImage,4,4.5,0,6/pushImage:getWidth(),6/pushImage:getWidth(),pushImage:getWidth()/2,pushImage:getHeight()/2)
-	love.graphics.line(0, 0, 0, 9)
-	love.graphics.setColor(255, 255, 255, 255)
 	clevel:draw()
 
 	-- love.graphics.rectangle("line",-7,0,14,9)

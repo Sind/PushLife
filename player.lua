@@ -6,7 +6,7 @@ player = {
 	damage = 1,
 	defence = 0,
 	image = love.graphics.newImage("graphics/player.png"),
-	scale = 0.015
+	scale = 0.03
 }
 
 
@@ -25,13 +25,13 @@ function player.update(dt)
 	end
 end
 function player.push()
-	if clevel.onhalftile then return end
+	if clevel.onhalftile or player.pushing or player.pulling then return end
 	player.pushing = true
 	player.animationTimer = 0
 end
 
 function player.pull()
-	if clevel.onhalftile then return end
+	if clevel.onhalftile or player.pushing or player.pulling then return end
 	player.pulling = true
 	player.animationTimer = 0
 end
