@@ -23,10 +23,6 @@ function level:update(dt)
 			return
 		end
 	end
-	if love.keyboard.isDown(" ") then
-		self.halftile = self.ctile
-		self.onhalftile = true
-	end
 end
 
 function level:draw()
@@ -74,11 +70,22 @@ function level:getTile(n)
 end
 
 function level:push()
-
+	if self.onhalftile then return end
+	local moveOn = self.objects[self.ctile]:push()
+	print(moveOn)
+	if moveOn then
+		self.halftile = self.ctile
+		self.onhalftile = true
+	end
 end
 
 function level:pull()
-
+	if self.onhalftile then return end
+	local moveOn = self.objects[self.ctile]:pull()
+	if moveOn then
+		self.halftile = self.ctile
+		self.onhalftile = true
+	end
 end
 
 

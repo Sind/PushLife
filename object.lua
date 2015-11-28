@@ -2,8 +2,24 @@ object = class()
 
 
 function object:init(objectType)
+	for k,v in pairs(objectType) do
+		print(k,v)
+	end
 	self.type = objectType.type
 	self.image = objectType.image
+end
+
+function object:push()
+	print(self.type)
+	if self.type == enemy then
+
+	else
+		return true
+	end
+end
+
+function object:pull()
+
 end
 
 function object:draw(x,y,scale)
@@ -12,7 +28,7 @@ end
 --objectlist:
 enemies = {
 	bat = {
-		type = enemy,
+		type = "enemy",
 		health = 3,
 		attack = 2
 	}
@@ -20,14 +36,14 @@ enemies = {
 
 consumables = {
 	apple = {
-		type = consumable,
-		subtype = health
+		type = "consumable",
+		subtype = "health"
 	}
 }
 
 chests = {
 	treasure = {
-		type = chest,
+		type = "chest",
 		minValue = 2,
 		maxValue = 7
 	},
@@ -38,8 +54,8 @@ chests = {
 
 equips = {
 	sword = {
-		type = equip,
-		subtype = weapon,
+		type = "equip",
+		subtype = "weapon",
 		attack = 1,
 		image = love.graphics.newImage("graphics/sword_shit.png")
 	}
@@ -52,7 +68,7 @@ potions = {
 
 vendors ={	
 	blacksmith = {
-		type = vendor,
+		type = "vendor",
 
 	}
 }

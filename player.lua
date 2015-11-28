@@ -28,12 +28,14 @@ function player.push()
 	if clevel.onhalftile or player.pushing or player.pulling then return end
 	player.pushing = true
 	player.animationTimer = 0
+	clevel:push()
 end
 
 function player.pull()
 	if clevel.onhalftile or player.pushing or player.pulling then return end
 	player.pulling = true
 	player.animationTimer = 0
+	clevel:pull()
 end
 
 function player.draw()
