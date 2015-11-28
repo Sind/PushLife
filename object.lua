@@ -50,7 +50,8 @@ enemies = {
 	dragon = {
 		type = "enemy",
 		health = 7,
-		attack = 3
+		attack = 3,
+		image = love.graphics.newImage("graphics/bosskek.png")
 	}
 }
 

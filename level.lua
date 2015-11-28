@@ -106,6 +106,6 @@ cave = {
 		-- chests.badChest,
 		equips.sword
 	},
-	boss = equips.sword,
+	boss = enemies.dragon,
 	background = love.graphics.newImage("graphics/cave_bg1.png")
 }
