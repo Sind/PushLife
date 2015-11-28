@@ -15,6 +15,16 @@ player = {
 function player.getHit(damage)
 	damage = math.max(1,math.floor(player.maxhealth/30),damage-player.defence)
 	player.health = player.health - damage
+	local hit = physicsobject:new(0,5.5,"-" .. damage,{255,0,0})
+	table.insert(physicsobjects,hit)
+end
+
+function player.heal(heal)
+	player.health = player.health + heal
+	if player.health > player.maxhealth then player.health = player.maxhealth end
+
+	local heala = physicsobject:new(0,5.5,"+" .. heal,{0,255,0})
+	table.insert(physicsobjects,heala)
 end
 
 function player.update(dt)

@@ -11,6 +11,9 @@ end
 function object:push(attack,defence)
 	if self.type == "enemy" then
 		self.health = self.health - attack
+		local hit = physicsobject:new(0,2,"-" .. attack,{255,0,255})
+		table.insert(physicsobjects,hit)
+
 		if self.health <= 0 then
 			return true
 		end
@@ -25,7 +28,7 @@ function object:pull(attack,defence)
 	elseif self.type == "equip" then
 		return true
 	elseif self.type == "consumable" then
-		player.health = player.health+1
+		player.heal(1)
 		return true
 	end
 end

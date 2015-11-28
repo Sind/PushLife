@@ -17,7 +17,6 @@ function love.load()
 	pullImage = love.graphics.newImage("graphics/pull.png")
 	font = love.graphics.newImageFont("graphics/font.png", "0123456789+-")
 	love.graphics.setFont(font)
-	local a = physicsobject:new(0,4.5,"-10",{200,0,0})
 
 	--handle window
 
@@ -70,6 +69,7 @@ function love.update(dt)
 end
 
 function love.draw()
+	love.graphics.push()
 	love.graphics.translate(dWidth/2,dtop)
 	love.graphics.scale((dright-dleft)/14,(dbottom-dtop)/9)
 
@@ -78,10 +78,11 @@ function love.draw()
 
 	-- love.graphics.rectangle("line",-7,0,14,9)
 	player.draw()
+	love.graphics.pop()
+	love.graphics.translate(dWidth/2,dtop)
 	for i,v in ipairs(physicsobjects) do
 		v:draw()
 	end
-
 end
 
 
