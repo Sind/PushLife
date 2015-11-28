@@ -11,8 +11,14 @@ function love.load()
 	require "object"
 	require "level"
 	require "helpfuncs"
+	require "physicsobject"
+	physicsobjects = {}
 	pushImage = love.graphics.newImage("graphics/push.png")
 	pullImage = love.graphics.newImage("graphics/pull.png")
+	font = love.graphics.newImageFont("graphics/font.png", "0123456789+-")
+	love.graphics.setFont(font)
+	local a = physicsobject:new(0,4.5,"-10",{200,0,0})
+
 	--handle window
 
 	-- dWidth, dHeight = love.window.getDesktopDimensions()
@@ -58,6 +64,9 @@ function love.update(dt)
 	end
 	player.update(dt)
 	clevel:update(dt)
+	for i,v in ipairs(physicsobjects) do
+		v:update(dt)
+	end
 end
 
 function love.draw()
@@ -69,6 +78,9 @@ function love.draw()
 
 	-- love.graphics.rectangle("line",-7,0,14,9)
 	player.draw()
+	for i,v in ipairs(physicsobjects) do
+		v:draw()
+	end
 
 end
 
